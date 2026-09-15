@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Event;
+
+class EventController extends Controller
+{
+    public function index()
+    {
+        $events = Event::published()->orderBy('starts_at')->get();
+
+        return view('frontend.events.index', compact('events'));
+    }
+
+    public function show(Event $event)
+    {
+        abort_if($event->status !== 'published', 404);
+
+        $event->load('agendaItems');
+
+        return view('frontend.events.show', compact('event'));
+    }
+}
