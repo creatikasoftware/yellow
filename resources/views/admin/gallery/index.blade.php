@@ -4,7 +4,13 @@
 
 @section('content')
 
-    <x-admin.page-heading title="Gallery" ctaText="Add Image" :ctaUrl="route('admin.gallery.create')" />
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h4 mb-0">Gallery</h1>
+        <div>
+            <a href="{{ route('admin.gallery-categories.index') }}" class="btn btn-outline-secondary btn-sm">Manage Categories</a>
+            <a href="{{ route('admin.gallery.create') }}" class="btn btn-dark btn-sm"><i class="bi bi-plus-lg me-1"></i>Add Image</a>
+        </div>
+    </div>
 
     <div class="card">
         <table class="table mb-0 align-middle">
@@ -13,6 +19,7 @@
                     <th>Preview</th>
                     <th>Caption</th>
                     <th>Event</th>
+                    <th>Category</th>
                     <th>Featured</th>
                     <th class="text-end">Actions</th>
                 </tr>
@@ -29,6 +36,7 @@
                         </td>
                         <td class="small text-muted">{{ $item->caption }}</td>
                         <td class="small text-muted">{{ $item->event->title ?? '—' }}</td>
+                        <td class="small text-muted">{{ $item->category->name ?? '—' }}</td>
                         <td>{{ $item->is_featured ? 'Yes' : '' }}</td>
                         <td class="text-end">
                             <a href="{{ route('admin.gallery.edit', $item) }}" class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil"></i></a>
@@ -36,7 +44,7 @@
                         </td>
                     </tr>
                 @empty
-                    <tr><td colspan="5" class="text-muted text-center py-4">No gallery items yet.</td></tr>
+                    <tr><td colspan="6" class="text-muted text-center py-4">No gallery items yet.</td></tr>
                 @endforelse
             </tbody>
         </table>

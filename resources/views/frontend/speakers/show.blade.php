@@ -20,7 +20,11 @@
         <div class="container">
             <div class="row g-5 align-items-start">
                 <div class="col-lg-4">
-                    <div class="speaker-image" style="height:390px"></div>
+                    @if($speaker->photo)
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($speaker->photo) }}" alt="{{ $speaker->name }}" class="speaker-image" style="height:390px;width:100%;object-fit:cover">
+                    @else
+                        <div class="speaker-image" style="height:390px"></div>
+                    @endif
                 </div>
                 <div class="col-lg-8">
                     @if($speaker->bio)

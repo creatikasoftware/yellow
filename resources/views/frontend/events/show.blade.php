@@ -20,7 +20,11 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-8">
-                    <div class="image-placeholder" style="height:430px"></div>
+                    @if($event->image)
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($event->image) }}" alt="{{ $event->title }}" style="width:100%;height:430px;object-fit:cover">
+                    @else
+                        <div class="image-placeholder" style="height:430px"></div>
+                    @endif
 
                     @if($event->description)
                         <div class="section-kicker mt-5">About The Event</div>

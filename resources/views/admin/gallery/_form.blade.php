@@ -7,6 +7,8 @@
                 <x-admin.file name="image" label="Image" :current="$galleryItem->image" />
                 <x-admin.input name="caption" label="Caption" :value="$galleryItem->caption" />
                 <x-admin.select name="event_id" label="Related Event" :value="$galleryItem->event_id" :options="$events" placeholder="No specific event" />
+                <x-admin.select name="category_id" label="Category" :value="$galleryItem->category_id" :options="$categories" placeholder="No category" />
+                <a href="{{ route('admin.gallery-categories.index') }}" class="small">Manage categories &rarr;</a>
             </div>
         </div>
     </div>

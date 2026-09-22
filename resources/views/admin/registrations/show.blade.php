@@ -10,6 +10,9 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
+                    @if($registration->photo)
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($registration->photo) }}" alt="{{ $registration->full_name }}" class="rounded mb-3" style="width:120px;height:120px;object-fit:cover">
+                    @endif
                     <dl class="row mb-0">
                         <dt class="col-sm-3">Name</dt><dd class="col-sm-9">{{ $registration->full_name }}</dd>
                         <dt class="col-sm-3">Email</dt><dd class="col-sm-9">{{ $registration->email }}</dd>

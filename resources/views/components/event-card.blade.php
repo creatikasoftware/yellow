@@ -1,6 +1,15 @@
-@props(['event', 'compact' => false])
-<div class="card-clean">
-    <div class="image-placeholder event-image"></div>
+@props(['event', 'compact' => false, 'past' => false])
+<div class="card-clean{{ $past ? ' opacity-75' : '' }}">
+    <div class="position-relative">
+        @if($event->image)
+            <img src="{{ \Illuminate\Support\Facades\Storage::url($event->image) }}" alt="{{ $event->title }}" class="event-image" style="width:100%;height:220px;object-fit:cover{{ $past ? ';filter:grayscale(60%)' : '' }}">
+        @else
+            <div class="image-placeholder event-image"></div>
+        @endif
+        @if($past)
+            <span class="badge bg-secondary position-absolute top-0 end-0 m-2">Completed</span>
+        @endif
+    </div>
     <div class="card-body-custom">
         <div class="meta">{{ $event->starts_at->format('d M Y') }}</div>
 

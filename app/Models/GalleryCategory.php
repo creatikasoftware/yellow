@@ -2,29 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
-class Speaker extends Model
+class GalleryCategory extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'name',
         'slug',
-        'role',
-        'tagline',
-        'bio',
-        'expertise',
-        'photo',
-        'sort_order',
-        'category_id',
-    ];
-
-    protected $casts = [
-        'expertise' => 'array',
     ];
 
     /**
@@ -38,21 +24,21 @@ class Speaker extends Model
 
     protected static function booted(): void
     {
-        static::creating(function (Speaker $speaker) {
-            if (blank($speaker->slug)) {
-                $speaker->slug = $speaker->name;
+        static::creating(function (GalleryCategory $category) {
+            if (blank($category->slug)) {
+                $category->slug = $category->name;
             }
         });
     }
 
-    public function category(): BelongsTo
+    public function galleryItems(): HasMany
     {
-        return $this->belongsTo(SpeakerCategory::class, 'category_id');
+        return $this->hasMany(GalleryItem::class, 'category_id');
     }
 
     public function scopeOrdered($query)
     {
-        return $query->orderBy('sort_order');
+        return $query->orderBy('name');
     }
 
     public function getRouteKeyName(): string

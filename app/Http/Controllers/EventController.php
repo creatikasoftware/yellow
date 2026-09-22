@@ -8,9 +8,10 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::published()->orderBy('starts_at')->get();
+        $upcomingEvents = Event::published()->upcoming()->orderBy('starts_at')->get();
+        $pastEvents = Event::published()->past()->orderByDesc('starts_at')->get();
 
-        return view('frontend.events.index', compact('events'));
+        return view('frontend.events.index', compact('upcomingEvents', 'pastEvents'));
     }
 
     public function show(Event $event)

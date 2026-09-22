@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Concerns\HandlesUploads;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SpeakerRequest;
 use App\Models\Speaker;
+use App\Models\SpeakerCategory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 
@@ -15,7 +16,7 @@ class SpeakerController extends Controller
 
     public function index()
     {
-        $speakers = Speaker::orderBy('sort_order')->paginate(15);
+        $speakers = Speaker::with('category')->orderBy('sort_order')->paginate(15);
 
         return view('admin.speakers.index', compact('speakers'));
     }
@@ -23,8 +24,9 @@ class SpeakerController extends Controller
     public function create()
     {
         $speaker = new Speaker();
+        $categories = SpeakerCategory::ordered()->pluck('name', 'id');
 
-        return view('admin.speakers.create', compact('speaker'));
+        return view('admin.speakers.create', compact('speaker', 'categories'));
     }
 
     public function store(SpeakerRequest $request): RedirectResponse
@@ -39,7 +41,9 @@ class SpeakerController extends Controller
 
     public function edit(Speaker $speaker)
     {
-        return view('admin.speakers.edit', compact('speaker'));
+        $categories = SpeakerCategory::ordered()->pluck('name', 'id');
+
+        return view('admin.speakers.edit', compact('speaker', 'categories'));
     }
 
     public function update(SpeakerRequest $request, Speaker $speaker): RedirectResponse

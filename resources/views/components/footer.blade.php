@@ -15,6 +15,9 @@
             <div class="{{ $extended ? 'col-lg-3' : 'col-lg-5' }}">
                 <img class="footer-logo mb-3" src="{{ asset('images/yellow-achievers-logo.webp') }}" alt="Yellow Achiever's Award">
                 <p class="footer-copy">{{ $site['footer_copy'] }}</p>
+                <form class="mt-3">
+                    <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_NmVOv7FYINsYeV" async></script>
+                </form>
                 <div class="social mt-3">
                     @foreach($socialLinks as $icon => $url)
                         <a href="{{ $url ?: '#' }}"><i class="bi bi-{{ $icon }}"></i></a>

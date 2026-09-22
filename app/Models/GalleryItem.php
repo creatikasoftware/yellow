@@ -14,6 +14,7 @@ class GalleryItem extends Model
         'image',
         'caption',
         'event_id',
+        'category_id',
         'is_featured',
         'sort_order',
     ];
@@ -25,6 +26,11 @@ class GalleryItem extends Model
     public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(GalleryCategory::class, 'category_id');
     }
 
     public function scopeOrdered($query)

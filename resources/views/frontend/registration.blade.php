@@ -24,9 +24,14 @@
                             <div class="alert alert-success">{{ session('status') }}</div>
                         @endif
 
-                        <form method="POST" action="{{ route('registration.store') }}">
+                        <form method="POST" action="{{ route('registration.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Profile Photo <small>(Optional)</small></label>
+                                    <input type="file" name="photo" accept="image/*" class="form-control @error('photo') is-invalid @enderror">
+                                    @error('photo')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Full Name *</label>
                                     <input class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}">

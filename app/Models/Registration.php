@@ -20,6 +20,7 @@ class Registration extends Model
         'industry',
         'registration_type',
         'message',
+        'photo',
         'agreed_terms',
         'source',
         'status',

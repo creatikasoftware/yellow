@@ -25,6 +25,7 @@ class SpeakerRequest extends FormRequest
             'expertise' => ['nullable', 'string'],
             'photo' => ['nullable', 'image', 'max:4096'],
             'sort_order' => ['nullable', 'integer'],
+            'category_id' => ['nullable', 'exists:speaker_categories,id'],
         ];
     }
 }

@@ -127,7 +127,7 @@
                                 <div class="ya-registration-badge">REGISTRATIONS OPEN</div>
                             @endif
 
-                            <h3>YELLOW ACHIEVER'S <strong>LEADERSHIP SUMMIT 2026</strong></h3>
+                            <h3><strong>{{ $featuredEvent->title }}</strong></h3>
 
                             <div class="ya-event-details">
                                 <div class="ya-event-detail">
@@ -160,13 +160,13 @@
                                 <a href="{{ route('events.show', $featuredEvent->slug) }}" class="ya-btn ya-btn-outline"><i class="bi bi-arrow-right"></i> Event Details</a>
                             </div>
 
-                            <div class="ya-countdown">
+                            <div class="ya-countdown" data-countdown="{{ $featuredEvent->starts_at_with_time->toIso8601String() }}">
                                 <div class="ya-countdown-title"><i class="bi bi-hourglass-split"></i> Event Starts In</div>
                                 <div class="ya-countdown-items">
-                                    <div class="ya-countdown-item"><strong>45</strong><span>DAYS</span></div>
-                                    <div class="ya-countdown-item"><strong>12</strong><span>HOURS</span></div>
-                                    <div class="ya-countdown-item"><strong>30</strong><span>MINS</span></div>
-                                    <div class="ya-countdown-item"><strong>20</strong><span>SECS</span></div>
+                                    <div class="ya-countdown-item"><strong data-countdown-days>00</strong><span>DAYS</span></div>
+                                    <div class="ya-countdown-item"><strong data-countdown-hours>00</strong><span>HOURS</span></div>
+                                    <div class="ya-countdown-item"><strong data-countdown-mins>00</strong><span>MINS</span></div>
+                                    <div class="ya-countdown-item"><strong data-countdown-secs>00</strong><span>SECS</span></div>
                                 </div>
                             </div>
                         </div>
@@ -181,11 +181,17 @@
                             <p>Fill in your details. Our team will confirm your registration within 24 hours.</p>
                         </div>
 
-                        <form method="POST" action="{{ route('registration.store') }}">
+                        <form method="POST" action="{{ route('registration.store') }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="event_slug" value="{{ $featuredEvent->slug }}">
 
                             <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="ya-form-label">Profile Photo <small>(Optional)</small></label>
+                                    <input type="file" name="photo" accept="image/*" class="form-control ya-form-control @error('photo') is-invalid @enderror">
+                                    @error('photo')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
+                                </div>
+
                                 <div class="col-md-6">
                                     <label class="ya-form-label">First Name <span>*</span></label>
                                     <input type="text" name="first_name" value="{{ old('first_name') }}" class="form-control ya-form-control @error('first_name') is-invalid @enderror" placeholder="Rahul">

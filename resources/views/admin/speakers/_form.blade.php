@@ -19,6 +19,8 @@
         <div class="card">
             <div class="card-body">
                 <x-admin.input name="sort_order" label="Sort Order" type="number" :value="$speaker->sort_order" />
+                <x-admin.select name="category_id" label="Category" :value="$speaker->category_id" :options="$categories" placeholder="No category" />
+                <a href="{{ route('admin.speaker-categories.index') }}" class="small d-block mb-2">Manage categories &rarr;</a>
                 <button type="submit" class="btn btn-dark w-100 mt-2">Save Speaker</button>
             </div>
         </div>

@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Speaker;
+use App\Models\SpeakerCategory;
 
 class SpeakerController extends Controller
 {
     public function index()
     {
-        $speakers = Speaker::ordered()->get();
+        $categories = SpeakerCategory::ordered()->get();
+        $speakersByCategory = Speaker::ordered()->get()->groupBy('category_id');
 
-        return view('frontend.speakers.index', compact('speakers'));
+        return view('frontend.speakers.index', compact('categories', 'speakersByCategory'));
     }
 
     public function show(Speaker $speaker)

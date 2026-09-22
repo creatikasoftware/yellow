@@ -28,6 +28,7 @@ class RegistrationController extends Controller
             'registration_type' => ['nullable', 'string', 'max:255'],
             'event_slug' => ['nullable', 'string', 'exists:events,slug'],
             'message' => ['nullable', 'string', 'max:5000'],
+            'photo' => ['nullable', 'image', 'max:4096'],
             'agreed_terms' => ['nullable', 'boolean'],
         ]);
 
@@ -35,9 +36,14 @@ class RegistrationController extends Controller
             ? Event::where('slug', $validated['event_slug'])->first()
             : null;
 
+        $photoPath = $request->hasFile('photo')
+            ? $request->file('photo')->store('registrations', 'public')
+            : null;
+
         Registration::create([
-            ...collect($validated)->except(['event_slug'])->toArray(),
+            ...collect($validated)->except(['event_slug', 'photo'])->toArray(),
             'event_id' => $event?->id,
+            'photo' => $photoPath,
             'agreed_terms' => $request->boolean('agreed_terms'),
             'source' => $event?->is_featured ? 'homepage_widget' : 'registration_page',
         ]);

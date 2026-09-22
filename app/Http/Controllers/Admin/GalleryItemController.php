@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Concerns\HandlesUploads;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\GalleryItemRequest;
 use App\Models\Event;
+use App\Models\GalleryCategory;
 use App\Models\GalleryItem;
 use Illuminate\Http\RedirectResponse;
 
@@ -15,7 +16,7 @@ class GalleryItemController extends Controller
 
     public function index()
     {
-        $galleryItems = GalleryItem::with('event')->orderBy('sort_order')->paginate(20);
+        $galleryItems = GalleryItem::with(['event', 'category'])->orderBy('sort_order')->paginate(20);
 
         return view('admin.gallery.index', compact('galleryItems'));
     }
@@ -24,8 +25,9 @@ class GalleryItemController extends Controller
     {
         $galleryItem = new GalleryItem();
         $events = Event::orderBy('title')->pluck('title', 'id');
+        $categories = GalleryCategory::ordered()->pluck('name', 'id');
 
-        return view('admin.gallery.create', compact('galleryItem', 'events'));
+        return view('admin.gallery.create', compact('galleryItem', 'events', 'categories'));
     }
 
     public function store(GalleryItemRequest $request): RedirectResponse
@@ -42,8 +44,9 @@ class GalleryItemController extends Controller
     public function edit(GalleryItem $galleryItem)
     {
         $events = Event::orderBy('title')->pluck('title', 'id');
+        $categories = GalleryCategory::ordered()->pluck('name', 'id');
 
-        return view('admin.gallery.edit', compact('galleryItem', 'events'));
+        return view('admin.gallery.edit', compact('galleryItem', 'events', 'categories'));
     }
 
     public function update(GalleryItemRequest $request, GalleryItem $galleryItem): RedirectResponse
