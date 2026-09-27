@@ -27,8 +27,7 @@
             <div class="card-body">
                 <x-admin.input name="intro_kicker" label="Kicker" :value="$content['intro_kicker']" required />
                 <x-admin.input name="intro_title" label="Title" :value="$content['intro_title']" required />
-                <x-admin.textarea name="intro_body_1" label="Paragraph 1" :value="$content['intro_body_1']" rows="3" required />
-                <x-admin.textarea name="intro_body_2" label="Paragraph 2" :value="$content['intro_body_2']" rows="3" required />
+                <x-admin.rich-editor name="intro_body_1" label="Paragraph 1" :value="$content['intro_body_1']" />
                 <div class="row">
                     <div class="col-md-3"><x-admin.input name="stat_1_value" label="Stat 1 value" :value="$content['stat_1_value']" required /></div>
                     <div class="col-md-3"><x-admin.input name="stat_1_label" label="Stat 1 label" :value="$content['stat_1_label']" required /></div>

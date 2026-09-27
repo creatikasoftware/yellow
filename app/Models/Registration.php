@@ -21,6 +21,7 @@ class Registration extends Model
         'registration_type',
         'message',
         'photo',
+        'cv',
         'agreed_terms',
         'source',
         'status',

@@ -8,7 +8,7 @@
                 <x-admin.input name="title" label="Service Title" :value="$service->title" required />
                 <x-admin.input name="slug" label="Slug" :value="$service->slug" help="Leave blank to auto-generate from the title. Letters, numbers and hyphens only." />
                 <x-admin.input name="short_description" label="Short Description" :value="$service->short_description" help="Shown on service cards and as the SEO fallback description." />
-                <x-admin.textarea name="description" label="Full Description" :value="$service->description" rows="8" />
+                <x-admin.rich-editor name="description" label="Full Description" :value="$service->description" />
                 <x-admin.file name="featured_image" label="Featured Image" :current="$service->featured_image" help="JPEG, PNG or WEBP, up to 2MB." />
                 <x-admin.input name="icon" label="Icon" :value="$service->icon" help="A Bootstrap Icons class name, e.g. bi-calendar-event — see icons.getbootstrap.com" />
             </div>

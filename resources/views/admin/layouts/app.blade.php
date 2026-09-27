@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin') | Yellow Achiever's Award</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -36,6 +37,7 @@
 
                 <div class="nav-section">Pages</div>
                 <a class="nav-link {{ request()->routeIs('admin.pages.home') ? 'active' : '' }}" href="{{ route('admin.pages.home') }}"><i class="bi bi-house me-2"></i>Home</a>
+                <a class="nav-link {{ request()->routeIs('admin.hero-slides.*') ? 'active' : '' }}" href="{{ route('admin.hero-slides.index') }}"><i class="bi bi-images me-2"></i>Hero Slides</a>
                 <a class="nav-link {{ request()->routeIs('admin.pages.about') ? 'active' : '' }}" href="{{ route('admin.pages.about') }}"><i class="bi bi-info-circle me-2"></i>About Us</a>
                 <a class="nav-link {{ request()->routeIs('admin.pages.contact') ? 'active' : '' }}" href="{{ route('admin.pages.contact') }}"><i class="bi bi-envelope-paper me-2"></i>Contact</a>
 

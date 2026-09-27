@@ -22,6 +22,13 @@
                         <dt class="col-sm-3">Registration Type</dt><dd class="col-sm-9">{{ $registration->registration_type ?: '—' }}</dd>
                         <dt class="col-sm-3">Event</dt><dd class="col-sm-9">{{ $registration->event->title ?? 'General' }}</dd>
                         <dt class="col-sm-3">Message</dt><dd class="col-sm-9">{{ $registration->message ?: '—' }}</dd>
+                        <dt class="col-sm-3">CV</dt><dd class="col-sm-9">
+                            @if($registration->cv)
+                                <a href="{{ \Illuminate\Support\Facades\Storage::url($registration->cv) }}" target="_blank"><i class="bi bi-file-earmark-text me-1"></i>View / Download CV</a>
+                            @else
+                                —
+                            @endif
+                        </dd>
                         <dt class="col-sm-3">Source</dt><dd class="col-sm-9">{{ $registration->source }}</dd>
                         <dt class="col-sm-3">Submitted</dt><dd class="col-sm-9">{{ $registration->created_at->format('d M Y, h:i A') }}</dd>
                     </dl>

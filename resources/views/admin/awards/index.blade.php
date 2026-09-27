@@ -12,6 +12,7 @@
                 <tr>
                     <th>Icon</th>
                     <th>Name</th>
+                    <th>Section</th>
                     <th>Short Description</th>
                     <th class="text-end">Actions</th>
                 </tr>
@@ -21,6 +22,7 @@
                     <tr>
                         <td><i class="bi {{ $award->icon }}"></i></td>
                         <td>{{ $award->name }}</td>
+                        <td class="small text-muted">{{ \App\Models\Award::SECTIONS[$award->section] ?? $award->section }}</td>
                         <td class="small text-muted">{{ $award->short_description }}</td>
                         <td class="text-end">
                             <a href="{{ route('admin.awards.edit', $award) }}" class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil"></i></a>
@@ -28,7 +30,7 @@
                         </td>
                     </tr>
                 @empty
-                    <tr><td colspan="4" class="text-muted text-center py-4">No award categories yet.</td></tr>
+                    <tr><td colspan="5" class="text-muted text-center py-4">No award categories yet.</td></tr>
                 @endforelse
             </tbody>
         </table>

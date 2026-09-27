@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Models\Award;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -20,6 +21,7 @@ class AwardRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('awards', 'slug')->ignore($awardId)],
             'icon' => ['required', 'string', 'max:100'],
+            'section' => ['required', Rule::in(array_keys(Award::SECTIONS))],
             'short_description' => ['nullable', 'string', 'max:255'],
             'long_description' => ['nullable', 'string'],
             'image' => ['nullable', 'image', 'max:4096'],

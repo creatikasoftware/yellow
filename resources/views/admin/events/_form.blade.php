@@ -7,7 +7,7 @@
                 <x-admin.input name="title" label="Title" :value="$event->title" required />
                 <x-admin.input name="slug" label="Slug" :value="$event->slug" help="Leave blank to auto-generate from the title." />
                 <x-admin.input name="summary" label="Summary" :value="$event->summary" help="Short teaser shown on event cards." />
-                <x-admin.textarea name="description" label="Description" :value="$event->description" rows="4" />
+                <x-admin.rich-editor name="description" label="Description" :value="$event->description" />
                 <x-admin.textarea name="highlights" label="Highlights" :value="$event->highlights ? implode(PHP_EOL, $event->highlights) : null" rows="4" help="One highlight per line." />
                 <x-admin.file name="image" label="Event Image" :current="$event->image" />
             </div>
@@ -49,6 +49,7 @@
                 <x-admin.select name="status" label="Status" :value="$event->status" :options="['draft' => 'Draft', 'published' => 'Published']" required />
                 <x-admin.checkbox name="registration_open" label="Registrations open" :checked="$event->registration_open ?? true" />
                 <x-admin.checkbox name="is_featured" label="Feature on homepage" :checked="$event->is_featured ?? false" />
+                <x-admin.file name="featured_image" label="Featured Homepage Image" :current="$event->featured_image" help="Used only for the featured event card shown on the homepage and Events page (separate from the Event Image above)." />
                 <button type="submit" class="btn btn-dark w-100 mt-2">Save Event</button>
             </div>
         </div>

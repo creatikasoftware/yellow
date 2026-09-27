@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Support\PageContent;
 
 class EventController extends Controller
 {
@@ -10,8 +11,10 @@ class EventController extends Controller
     {
         $upcomingEvents = Event::published()->upcoming()->orderBy('starts_at')->get();
         $pastEvents = Event::published()->past()->orderByDesc('starts_at')->get();
+        $featuredEvent = Event::published()->where('is_featured', true)->first();
+        $content = PageContent::get('home');
 
-        return view('frontend.events.index', compact('upcomingEvents', 'pastEvents'));
+        return view('frontend.events.index', compact('upcomingEvents', 'pastEvents', 'featuredEvent', 'content'));
     }
 
     public function show(Event $event)

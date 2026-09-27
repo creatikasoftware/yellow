@@ -10,6 +10,7 @@
                 <x-admin.input name="tagline" label="Tagline" :value="$speaker->tagline" help="Shown on the profile page, e.g. Business Leader · Keynote Speaker · Mentor" />
                 <x-admin.textarea name="bio" label="Biography" :value="$speaker->bio" rows="4" />
                 <x-admin.textarea name="expertise" label="Areas of Expertise" :value="$speaker->expertise ? implode(PHP_EOL, $speaker->expertise) : null" rows="3" help="One per line." />
+                <x-admin.rich-editor name="profile_content" label="Profile Content" :value="$speaker->profile_content" help="Rich content shown on the speaker's public profile page, below Areas of Expertise. Supports headings, images and embedded video." />
                 <x-admin.file name="photo" label="Photo" :current="$speaker->photo" />
             </div>
         </div>

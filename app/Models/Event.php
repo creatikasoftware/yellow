@@ -28,6 +28,7 @@ class Event extends Model
         'brochure_path',
         'registration_open',
         'is_featured',
+        'featured_image',
         'status',
     ];
 

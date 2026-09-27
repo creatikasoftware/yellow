@@ -29,7 +29,7 @@
                     @if($event->description)
                         <div class="section-kicker mt-5">About The Event</div>
                         <h2 class="section-title">A Night Celebrating Extraordinary Achievement</h2>
-                        <p class="detail-copy mt-3">{{ $event->description }}</p>
+                        <div class="detail-copy mt-3">{!! $event->description !!}</div>
                     @endif
 
                     @if(!empty($event->highlights))

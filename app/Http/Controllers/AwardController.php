@@ -8,9 +8,10 @@ class AwardController extends Controller
 {
     public function index()
     {
-        $awards = Award::ordered()->get();
+        $ourAwards = Award::section('our_awards')->ordered()->get();
+        $ourCategories = Award::section('our_categories')->ordered()->get();
 
-        return view('frontend.awards.index', compact('awards'));
+        return view('frontend.awards.index', compact('ourAwards', 'ourCategories'));
     }
 
     public function show(Award $award)

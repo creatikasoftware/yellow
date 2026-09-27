@@ -14,10 +14,16 @@ class Award extends Model
         'name',
         'slug',
         'icon',
+        'section',
         'short_description',
         'long_description',
         'image',
         'sort_order',
+    ];
+
+    public const SECTIONS = [
+        'our_awards' => 'Our Awards',
+        'our_categories' => 'Our Categories',
     ];
 
     /**
@@ -41,6 +47,11 @@ class Award extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('sort_order');
+    }
+
+    public function scopeSection($query, string $section)
+    {
+        return $query->where('section', $section);
     }
 
     public function getRouteKeyName(): string

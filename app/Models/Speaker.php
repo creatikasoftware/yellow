@@ -18,6 +18,7 @@ class Speaker extends Model
         'tagline',
         'bio',
         'expertise',
+        'profile_content',
         'photo',
         'sort_order',
         'category_id',
@@ -41,6 +42,10 @@ class Speaker extends Model
         static::creating(function (Speaker $speaker) {
             if (blank($speaker->slug)) {
                 $speaker->slug = $speaker->name;
+            }
+
+            if (is_null($speaker->sort_order)) {
+                $speaker->sort_order = 0;
             }
         });
     }

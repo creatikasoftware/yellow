@@ -60,7 +60,6 @@ class PageContent
                 'intro_kicker' => 'Who We Are',
                 'intro_title' => 'A Platform Built Around Achievement',
                 'intro_body_1' => 'We bring together achievers, business leaders, entrepreneurs, professionals and changemakers through awards, summits and networking experiences.',
-                'intro_body_2' => 'Our objective is simple: create visibility for meaningful work, connect people with opportunities and celebrate stories worth sharing.',
                 'stat_1_value' => '5000+',
                 'stat_1_label' => 'Nominations',
                 'stat_2_value' => '1000+',

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\GalleryCategoryController;
 use App\Http\Controllers\Admin\GalleryItemController;
+use App\Http\Controllers\Admin\HeroSlideController;
 use App\Http\Controllers\Admin\NewsArticleController;
 use App\Http\Controllers\Admin\PageContentController;
 use App\Http\Controllers\Admin\PartnerController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SpeakerCategoryController;
 use App\Http\Controllers\Admin\SpeakerController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,8 +30,11 @@ Route::post('/admin/logout', [LoginController::class, 'destroy'])->middleware('a
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::post('uploads/image', [UploadController::class, 'image'])->name('uploads.image');
+
     Route::get('pages/home', [PageContentController::class, 'editHome'])->name('pages.home');
     Route::put('pages/home', [PageContentController::class, 'updateHome'])->name('pages.home.update');
+    Route::resource('hero-slides', HeroSlideController::class)->except('show')->parameters(['hero-slides' => 'heroSlide']);
     Route::get('pages/about', [PageContentController::class, 'editAbout'])->name('pages.about');
     Route::put('pages/about', [PageContentController::class, 'updateAbout'])->name('pages.about.update');
     Route::get('pages/contact', [PageContentController::class, 'editContact'])->name('pages.contact');

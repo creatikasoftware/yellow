@@ -31,6 +31,7 @@ class EventRequest extends FormRequest
             'image' => ['nullable', 'image', 'max:4096'],
             'registration_open' => ['nullable', 'boolean'],
             'is_featured' => ['nullable', 'boolean'],
+            'featured_image' => ['nullable', 'image', 'max:4096'],
             'status' => ['required', Rule::in(['draft', 'published'])],
             'agenda_time' => ['nullable', 'array'],
             'agenda_title' => ['nullable', 'array'],

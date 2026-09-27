@@ -46,9 +46,7 @@
                     <h2 class="section-title">{{ $service->title }}</h2>
 
                     @if($service->description)
-                        @foreach(explode("\n\n", $service->description) as $paragraph)
-                            <p class="detail-copy mt-3">{{ $paragraph }}</p>
-                        @endforeach
+                        <div class="detail-copy mt-3">{!! $service->description !!}</div>
                     @elseif($service->short_description)
                         <p class="detail-copy mt-3">{{ $service->short_description }}</p>
                     @endif

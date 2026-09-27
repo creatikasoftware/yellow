@@ -31,6 +31,7 @@ class EventController extends Controller
     {
         $data = $this->prepare($request);
         $data['image'] = $this->storeUploadedImage($request, 'image', 'events');
+        $data['featured_image'] = $this->storeUploadedImage($request, 'featured_image', 'events');
 
         $event = Event::create($data);
         $this->syncAgenda($event, $request);
@@ -54,6 +55,11 @@ class EventController extends Controller
             $data['image'] = $image;
         }
 
+        if ($featuredImage = $this->storeUploadedImage($request, 'featured_image', 'events')) {
+            $this->deleteStoredImage($event->featured_image);
+            $data['featured_image'] = $featuredImage;
+        }
+
         $event->update($data);
         $this->syncAgenda($event, $request);
 
@@ -63,6 +69,7 @@ class EventController extends Controller
     public function destroy(Event $event): RedirectResponse
     {
         $this->deleteStoredImage($event->image);
+        $this->deleteStoredImage($event->featured_image);
         $event->delete();
 
         return redirect()->route('admin.events.index')->with('status', 'Event deleted.');
@@ -70,7 +77,7 @@ class EventController extends Controller
 
     private function prepare(EventRequest $request, ?Event $event = null): array
     {
-        $data = $request->safe()->except(['image', 'agenda_time', 'agenda_title', 'agenda_description']);
+        $data = $request->safe()->except(['image', 'featured_image', 'agenda_time', 'agenda_title', 'agenda_description']);
 
         $data['slug'] = ($data['slug'] ?? null) ?: Str::slug($data['title']);
         $data['highlights'] = ($data['highlights'] ?? null)

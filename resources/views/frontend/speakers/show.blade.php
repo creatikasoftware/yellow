@@ -41,6 +41,12 @@
                             @endforeach
                         </div>
                     @endif
+
+                    @if($speaker->profile_content)
+                        <div class="speaker-rich-content mt-4">
+                            {!! $speaker->profile_content !!}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

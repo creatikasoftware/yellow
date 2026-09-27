@@ -1608,3 +1608,13 @@ select.ya-form-control {
 .gallery-box-image{height:250px;width:100%;object-fit:cover;border-radius:9px;display:block}
 .gallery-box-image.large{height:520px}
 @media(max-width:767px){.gallery-box-image.large{height:300px}}
+
+/* =========================================================
+   Speaker profile rich content (admin-authored via the Quill
+   editor on the speaker form — headings, images, embedded
+   video). Only the output needs styling here; the editor
+   itself loads Quill's own CSS in the admin.
+========================================================= */
+.speaker-rich-content img{max-width:100%;height:auto;border-radius:9px}
+.speaker-rich-content iframe.ql-video{width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:9px}
+.speaker-rich-content p{line-height:1.75;color:var(--muted)}

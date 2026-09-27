@@ -24,8 +24,7 @@
                 <div class="col-lg-6">
                     <div class="section-kicker">{{ $content['intro_kicker'] }}</div>
                     <h2 class="section-title">{{ $content['intro_title'] }}</h2>
-                    <p class="detail-copy mt-3">{{ $content['intro_body_1'] }}</p>
-                    <p class="detail-copy">{{ $content['intro_body_2'] }}</p>
+                    <div class="detail-copy mt-3">{!! $content['intro_body_1'] !!}</div>
                     <div class="row g-3 mt-3">
                         <div class="col-6">
                             <div class="info-box">

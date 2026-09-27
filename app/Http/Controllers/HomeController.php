@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Award;
 use App\Models\Event;
 use App\Models\GalleryItem;
+use App\Models\HeroSlide;
 use App\Models\Partner;
 use App\Models\Setting;
 use App\Models\Speaker;
@@ -17,6 +18,7 @@ class HomeController extends Controller
     public function index()
     {
         $content = PageContent::get('home');
+        $heroSlides = HeroSlide::ordered()->get();
         // Featured events are promised a spot ("Feature on homepage" in the
         // admin), so they're sorted ahead of the merely-soonest ones here.
         $events = Event::published()->upcoming()->orderByDesc('is_featured')->orderBy('starts_at')->take(3)->get();
@@ -39,6 +41,7 @@ class HomeController extends Controller
 
         return view('frontend.home', [
             'content' => $content,
+            'heroSlides' => $heroSlides,
             'events' => $events,
             'awards' => $awards,
             'speakers' => $speakers,
