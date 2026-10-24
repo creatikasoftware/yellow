@@ -24,7 +24,6 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="section-kicker">Category Overview</div>
-                    <h2 class="section-title">For Leaders Who Raise the Bar</h2>
                     @if($award->long_description)
                         <div class="detail-copy mt-3">{!! $award->long_description !!}</div>
                     @endif
