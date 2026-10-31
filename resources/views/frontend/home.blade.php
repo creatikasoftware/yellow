@@ -203,4 +203,6 @@
         </div>
     </section>
 
+    <x-gallery-lightbox />
+
 @endsection

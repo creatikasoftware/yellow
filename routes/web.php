@@ -28,6 +28,7 @@ Route::get('/speakers', [SpeakerController::class, 'index'])->name('speakers.ind
 Route::get('/speakers/{speaker}', [SpeakerController::class, 'show'])->name('speakers.show');
 
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+Route::get('/gallery/load-more', [GalleryController::class, 'loadMore'])->name('gallery.load-more');
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
