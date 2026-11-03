@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegistrationReceived;
 use App\Models\Event;
 use App\Models\Registration;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class RegistrationController extends Controller
 {
@@ -53,7 +56,7 @@ class RegistrationController extends Controller
             ? $request->file('cv')->store('registrations/cv', 'public')
             : null;
 
-        Registration::create([
+        $registration = Registration::create([
             ...collect($validated)->except(['event_slug', 'photo', 'cv'])->toArray(),
             'event_id' => $event?->id,
             'photo' => $photoPath,
@@ -61,6 +64,15 @@ class RegistrationController extends Controller
             'agreed_terms' => $request->boolean('agreed_terms'),
             'source' => $event?->is_featured ? 'homepage_widget' : 'registration_page',
         ]);
+
+        // The registration is already saved above regardless of what happens
+        // here, so a mail outage never blocks the visitor's submission —
+        // just log it for follow-up.
+        try {
+            Mail::to(config('mail.contact_recipient'))->send(new RegistrationReceived($registration));
+        } catch (\Throwable $e) {
+            Log::error('Failed to send registration notification email: ' . $e->getMessage());
+        }
 
         return back()->with('status', 'Thank you — your registration has been received. Our team will confirm within 24 hours.');
     }
