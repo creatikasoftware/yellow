@@ -40,6 +40,7 @@
                 <a class="nav-link {{ request()->routeIs('admin.hero-slides.*') ? 'active' : '' }}" href="{{ route('admin.hero-slides.index') }}"><i class="bi bi-images me-2"></i>Hero Slides</a>
                 <a class="nav-link {{ request()->routeIs('admin.pages.about') ? 'active' : '' }}" href="{{ route('admin.pages.about') }}"><i class="bi bi-info-circle me-2"></i>About Us</a>
                 <a class="nav-link {{ request()->routeIs('admin.pages.contact') ? 'active' : '' }}" href="{{ route('admin.pages.contact') }}"><i class="bi bi-envelope-paper me-2"></i>Contact</a>
+                <a class="nav-link {{ request()->routeIs('admin.pages.partner') ? 'active' : '' }}" href="{{ route('admin.pages.partner') }}"><i class="bi bi-handshake me-2"></i>Partner With Us</a>
 
                 <div class="nav-section">Content</div>
                 <a class="nav-link {{ request()->routeIs('admin.services.*') ? 'active' : '' }}" href="{{ route('admin.services.index') }}"><i class="bi bi-gear me-2"></i>Services</a>
@@ -54,6 +55,7 @@
                 <div class="nav-section">Submissions</div>
                 <a class="nav-link {{ request()->routeIs('admin.registrations.*') ? 'active' : '' }}" href="{{ route('admin.registrations.index') }}"><i class="bi bi-person-check me-2"></i>Registrations</a>
                 <a class="nav-link {{ request()->routeIs('admin.contact-messages.*') ? 'active' : '' }}" href="{{ route('admin.contact-messages.index') }}"><i class="bi bi-envelope me-2"></i>Contact Messages</a>
+                <a class="nav-link {{ request()->routeIs('admin.partner-applications.*') ? 'active' : '' }}" href="{{ route('admin.partner-applications.index') }}"><i class="bi bi-person-badge me-2"></i>Partner Applications</a>
             </nav>
         </aside>
 

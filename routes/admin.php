@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\GalleryItemController;
 use App\Http\Controllers\Admin\HeroSlideController;
 use App\Http\Controllers\Admin\NewsArticleController;
 use App\Http\Controllers\Admin\PageContentController;
+use App\Http\Controllers\Admin\PartnerApplicationController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -39,6 +40,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::put('pages/about', [PageContentController::class, 'updateAbout'])->name('pages.about.update');
     Route::get('pages/contact', [PageContentController::class, 'editContact'])->name('pages.contact');
     Route::put('pages/contact', [PageContentController::class, 'updateContact'])->name('pages.contact.update');
+    Route::get('pages/partner', [PageContentController::class, 'editPartner'])->name('pages.partner');
+    Route::put('pages/partner', [PageContentController::class, 'updatePartner'])->name('pages.partner.update');
 
     Route::resource('services', ServiceController::class)->except('show');
     Route::patch('services/{service}/toggle-status', [ServiceController::class, 'toggleStatus'])->name('services.toggle-status');
@@ -62,4 +65,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::get('contact-messages', [ContactMessageController::class, 'index'])->name('contact-messages.index');
     Route::get('contact-messages/{contactMessage}', [ContactMessageController::class, 'show'])->name('contact-messages.show');
     Route::delete('contact-messages/{contactMessage}', [ContactMessageController::class, 'destroy'])->name('contact-messages.destroy');
+
+    Route::get('partner-applications', [PartnerApplicationController::class, 'index'])->name('partner-applications.index');
+    Route::get('partner-applications/{partnerApplication}', [PartnerApplicationController::class, 'show'])->name('partner-applications.show');
+    Route::match(['put', 'patch'], 'partner-applications/{partnerApplication}', [PartnerApplicationController::class, 'update'])->name('partner-applications.update');
+    Route::delete('partner-applications/{partnerApplication}', [PartnerApplicationController::class, 'destroy'])->name('partner-applications.destroy');
 });

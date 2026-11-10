@@ -37,6 +37,7 @@
                     <li><a href="{{ route('gallery.index') }}">Gallery</a></li>
                     <li><a href="{{ route('news.index') }}">News</a></li>
                     <li><a href="{{ route('contact') }}">Contact</a></li>
+                    <li><a href="{{ route('partner') }}">Partner With Us</a></li>
                 </ul>
             </div>
 

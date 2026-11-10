@@ -1618,3 +1618,17 @@ select.ya-form-control {
 .speaker-rich-content img{max-width:100%;height:auto;border-radius:9px}
 .speaker-rich-content iframe.ql-video{width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:9px}
 .speaker-rich-content p{line-height:1.75;color:var(--muted)}
+
+/* =========================================================
+   Partner With Us page — hero tag pills, stat cards and the
+   testimonial card sitting on the dark .page-hero background.
+========================================================= */
+.partner-tag{display:inline-block;padding:7px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.25);color:#e7e9ec;font-size:13px;font-weight:600}
+.partner-tag.is-accent{border-color:var(--gold);color:var(--gold)}
+.partner-stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:22px}
+.partner-stat-card strong{font-size:32px;font-weight:800;color:var(--gold);display:block;line-height:1.1}
+.partner-stat-card span{font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:#aeb4bc}
+.partner-testimonial-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:22px}
+.partner-testimonial-card .eyebrow{color:#aeb4bc;font-size:11px}
+.partner-testimonial-card p{color:#e7e9ec;font-style:italic;line-height:1.7}
+.partner-testimonial-card cite{color:var(--gold);font-style:normal;font-weight:600;font-size:13px}

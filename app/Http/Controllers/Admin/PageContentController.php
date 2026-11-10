@@ -143,4 +143,52 @@ class PageContentController extends Controller
 
         return back()->with('status', 'Contact page content updated.');
     }
+
+    public function editPartner()
+    {
+        $content = PageContent::get('partner');
+
+        return view('admin.pages.partner', compact('content'));
+    }
+
+    public function updatePartner(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'hero_eyebrow' => ['required', 'string', 'max:255'],
+            'hero_title' => ['required', 'string', 'max:255'],
+            'hero_subtitle' => ['required', 'string', 'max:1000'],
+            'hero_cta_primary' => ['required', 'string', 'max:100'],
+            'hero_cta_secondary' => ['required', 'string', 'max:100'],
+            'tags' => ['required', 'string'],
+            'stat_value' => ['required', 'array', 'min:1'],
+            'stat_label' => ['required', 'array', 'min:1'],
+            'testimonial_kicker' => ['required', 'string', 'max:255'],
+            'testimonial_quote' => ['required', 'string', 'max:1000'],
+            'testimonial_author' => ['required', 'string', 'max:255'],
+            'form_title' => ['required', 'string', 'max:255'],
+            'form_subtitle' => ['required', 'string', 'max:500'],
+            'tiers' => ['required', 'string'],
+        ]);
+
+        $validated['tags'] = array_values(array_filter(array_map('trim', explode("\n", $validated['tags']))));
+        $validated['tiers'] = array_values(array_filter(array_map('trim', explode("\n", $validated['tiers']))));
+
+        $stats = [];
+        foreach ($validated['stat_value'] as $index => $value) {
+            if (blank($value)) {
+                continue;
+            }
+
+            $stats[] = [
+                'value' => $value,
+                'label' => $validated['stat_label'][$index] ?? '',
+            ];
+        }
+        $validated['stats'] = $stats;
+        unset($validated['stat_value'], $validated['stat_label']);
+
+        PageContent::set('partner', $validated);
+
+        return back()->with('status', 'Partner page content updated.');
+    }
 }

@@ -84,6 +84,27 @@ class PageContent
                 'intro_kicker' => 'Get In Touch',
                 'intro_title' => "We'd Love to Hear From You",
             ],
+            'partner' => [
+                'hero_eyebrow' => 'Channel Partners',
+                'hero_title' => "Grow With India's Fastest-Growing Recognition Platform",
+                'hero_subtitle' => "Join our channel partner network. Whether you're an event management company, corporate consultancy or community network — our partnership program gives you the tools, training and support to bring the Yellow Achiever's Award to your region.",
+                'hero_cta_primary' => 'Apply to Partner',
+                'hero_cta_secondary' => 'See Partnership Tiers',
+                'tags' => ['Event Companies', 'Corporate Consultants', 'Industry Associations', 'Community Networks'],
+                'stats' => [
+                    ['value' => '150+', 'label' => 'Active Partners'],
+                    ['value' => '18', 'label' => 'Cities'],
+                    ['value' => '500+', 'label' => 'Nominations Driven'],
+                    ['value' => '92%', 'label' => 'Partner Renewal Rate'],
+                ],
+                'testimonial_kicker' => 'What Partners Are Saying',
+                'testimonial_quote' => "Partnering with Yellow Achiever's Award helped us bring real recognition to leaders in our city. The support team made the entire process effortless.",
+                'testimonial_author' => 'Partner, Regional Events Network',
+                'form_title' => 'Partner Application Form',
+                'form_subtitle' => 'Our partner team will review and respond within 48 hours.',
+                'tiers' => ['Associate Partner', 'Regional Partner', 'Strategic Partner'],
+            ],
+
             // Site-wide values shown in the footer (and the contact page's
             // info box) on every page, not just one — kept in their own
             // "site" namespace rather than under "contact" for that reason.

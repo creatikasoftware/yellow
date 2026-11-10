@@ -7,6 +7,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PartnerApplicationController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SpeakerController;
@@ -38,3 +39,6 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
 Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
+
+Route::get('/partner-with-us', [PartnerApplicationController::class, 'index'])->name('partner');
+Route::post('/partner-with-us', [PartnerApplicationController::class, 'store'])->name('partner.store');
