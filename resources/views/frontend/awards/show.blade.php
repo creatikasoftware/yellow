@@ -20,7 +20,11 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-7">
-                    <div class="image-placeholder" style="height:390px"></div>
+                    @if($award->image)
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($award->image) }}" alt="{{ $award->name }}" style="width:100%;height:390px;object-fit:cover">
+                    @else
+                        <div class="image-placeholder" style="height:390px"></div>
+                    @endif
                 </div>
                 <div class="col-lg-5">
                     <div class="section-kicker">Category Overview</div>

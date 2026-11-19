@@ -12,4 +12,11 @@ class PageController extends Controller
 
         return view('frontend.about', compact('content'));
     }
+
+    public function privacyPolicy()
+    {
+        $content = PageContent::get('privacy');
+
+        return view('frontend.privacy-policy', compact('content'));
+    }
 }

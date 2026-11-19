@@ -1425,6 +1425,17 @@ select.ya-form-control {
 
 
 /* =========================================================
+   TESTIMONIALS CAROUSEL NAV
+========================================================= */
+
+.ya-testimonial-carousel{position:relative}
+.ya-testimonial-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid #1c2733;background:#fff;color:#1c2733;display:flex;align-items:center;justify-content:center;font-size:18px;transition:.2s;cursor:pointer;z-index:3}
+.ya-testimonial-arrow.prev{left:-56px}
+.ya-testimonial-arrow.next{right:-56px}
+.ya-testimonial-arrow:hover{background:var(--gold);border-color:var(--gold);color:#17191d}
+@media(max-width:1300px){.ya-testimonial-arrow.prev{left:6px}.ya-testimonial-arrow.next{right:6px}}
+
+/* =========================================================
    TRUST STATISTICS
 ========================================================= */
 

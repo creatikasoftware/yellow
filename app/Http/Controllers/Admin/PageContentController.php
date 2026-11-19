@@ -191,4 +191,23 @@ class PageContentController extends Controller
 
         return back()->with('status', 'Partner page content updated.');
     }
+
+    public function editPrivacy()
+    {
+        $content = PageContent::get('privacy');
+
+        return view('admin.pages.privacy', compact('content'));
+    }
+
+    public function updatePrivacy(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'body' => ['required', 'string'],
+        ]);
+
+        PageContent::set('privacy', $validated);
+
+        return back()->with('status', 'Privacy Policy page updated.');
+    }
 }

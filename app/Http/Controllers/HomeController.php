@@ -34,8 +34,14 @@ class HomeController extends Controller
         $featuredGalleryItem = $allGalleryItems->firstWhere('is_featured', true);
         $otherGalleryItems = $allGalleryItems->reject(fn ($item) => $featuredGalleryItem && $item->is($featuredGalleryItem))->values();
         $testimonials = Testimonial::ordered()->get();
+        // The admin's featured testimonial (if any) just leads the order
+        // here; the homepage shows every testimonial the same way now, 3
+        // per slide.
         $featuredTestimonial = $testimonials->firstWhere('is_featured', true);
-        $smallTestimonials = $testimonials->where('is_featured', false)->values();
+        $orderedTestimonials = $featuredTestimonial
+            ? $testimonials->reject(fn ($t) => $t->is($featuredTestimonial))->prepend($featuredTestimonial)->values()
+            : $testimonials;
+        $testimonialSlides = $orderedTestimonials->chunk(3)->values();
         $partners = Partner::ordered()->get();
         $featuredEvent = Event::published()->where('is_featured', true)->first();
 
@@ -47,8 +53,7 @@ class HomeController extends Controller
             'speakers' => $speakers,
             'featuredGalleryItem' => $featuredGalleryItem,
             'otherGalleryItems' => $otherGalleryItems,
-            'featuredTestimonial' => $featuredTestimonial,
-            'smallTestimonials' => $smallTestimonials,
+            'testimonialSlides' => $testimonialSlides,
             'partners' => $partners,
             'featuredEvent' => $featuredEvent,
             'homeStats' => json_decode(Setting::get('home.stats', '[]'), true),

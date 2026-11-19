@@ -104,6 +104,10 @@ class PageContent
                 'form_subtitle' => 'Our partner team will review and respond within 48 hours.',
                 'tiers' => ['Associate Partner', 'Regional Partner', 'Strategic Partner'],
             ],
+            'privacy' => [
+                'title' => 'Privacy Policy',
+                'body' => '<p>We respect your privacy and are committed to protecting the personal information you share with us. This policy explains what information we collect, how we use it, and the choices you have.</p><h3>Information We Collect</h3><p>We collect information you provide directly to us, such as your name, email address and phone number when you register for an event, submit a nomination or contact us.</p><h3>How We Use Your Information</h3><p>We use the information we collect to process registrations, respond to enquiries, and keep you informed about our events and awards.</p><h3>Contact Us</h3><p>If you have any questions about this Privacy Policy, please contact us at info@yellowawards.in.</p>',
+            ],
 
             // Site-wide values shown in the footer (and the contact page's
             // info box) on every page, not just one — kept in their own

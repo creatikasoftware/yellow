@@ -155,7 +155,7 @@
         <x-featured-event-widget :event="$featuredEvent" :content="$content" />
     @endif
 
-    @if($featuredTestimonial)
+    @if($testimonialSlides->isNotEmpty())
     <section class="ya-testimonials">
         <div class="container">
             <div class="ya-testimonials-header">
@@ -166,18 +166,34 @@
                 <p class="ya-heading-description">{{ $content['testimonials_subtitle'] }}</p>
             </div>
 
-            <div class="row g-4">
-                <div class="col-lg-7">
-                    <x-testimonial-card :testimonial="$featuredTestimonial" featured />
+            <div id="testimonialsCarousel" class="carousel slide ya-testimonial-carousel" data-bs-ride="false">
+                @if($testimonialSlides->count() > 1)
+                    <button type="button" class="ya-testimonial-arrow prev" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                        <i class="bi bi-chevron-left"></i>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                @endif
+
+                <div class="carousel-inner">
+                    @foreach($testimonialSlides as $i => $slide)
+                        <div class="carousel-item {{ $i === 0 ? 'active' : '' }}">
+                            <div class="row g-4">
+                                @foreach($slide as $testimonial)
+                                    <div class="col-lg-4">
+                                        <x-testimonial-card :testimonial="$testimonial" />
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
 
-                <div class="col-lg-5">
-                    <div class="ya-testimonial-list">
-                        @foreach($smallTestimonials as $testimonial)
-                            <x-testimonial-card :testimonial="$testimonial" />
-                        @endforeach
-                    </div>
-                </div>
+                @if($testimonialSlides->count() > 1)
+                    <button type="button" class="ya-testimonial-arrow next" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                        <i class="bi bi-chevron-right"></i>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                @endif
             </div>
 
             <div class="ya-trust-stats">
