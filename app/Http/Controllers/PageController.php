@@ -19,4 +19,11 @@ class PageController extends Controller
 
         return view('frontend.privacy-policy', compact('content'));
     }
+
+    public function termsConditions()
+    {
+        $content = PageContent::get('terms');
+
+        return view('frontend.terms-conditions', compact('content'));
+    }
 }

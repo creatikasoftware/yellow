@@ -210,4 +210,23 @@ class PageContentController extends Controller
 
         return back()->with('status', 'Privacy Policy page updated.');
     }
+
+    public function editTerms()
+    {
+        $content = PageContent::get('terms');
+
+        return view('admin.pages.terms', compact('content'));
+    }
+
+    public function updateTerms(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'body' => ['required', 'string'],
+        ]);
+
+        PageContent::set('terms', $validated);
+
+        return back()->with('status', 'Terms & Conditions page updated.');
+    }
 }

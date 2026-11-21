@@ -44,6 +44,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::put('pages/partner', [PageContentController::class, 'updatePartner'])->name('pages.partner.update');
     Route::get('pages/privacy', [PageContentController::class, 'editPrivacy'])->name('pages.privacy');
     Route::put('pages/privacy', [PageContentController::class, 'updatePrivacy'])->name('pages.privacy.update');
+    Route::get('pages/terms', [PageContentController::class, 'editTerms'])->name('pages.terms');
+    Route::put('pages/terms', [PageContentController::class, 'updateTerms'])->name('pages.terms.update');
 
     Route::resource('services', ServiceController::class)->except('show');
     Route::patch('services/{service}/toggle-status', [ServiceController::class, 'toggleStatus'])->name('services.toggle-status');

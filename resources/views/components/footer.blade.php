@@ -39,6 +39,7 @@
                     <li><a href="{{ route('contact') }}">Contact</a></li>
                     <li><a href="{{ route('partner') }}">Partner With Us</a></li>
                     <li><a href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
+                    <li><a href="{{ route('terms-conditions') }}">Terms &amp; Conditions</a></li>
                 </ul>
             </div>
 
@@ -64,7 +65,7 @@
         </div>
         <div class="footer-bottom d-flex justify-content-between flex-wrap gap-2">
             <span>&copy; {{ date('Y') }} Yellow Achiever's Award. All Rights Reserved.</span>
-            <span><a href="{{ route('privacy-policy') }}">Privacy Policy</a> &nbsp; | &nbsp; Terms &amp; Conditions</span>
+            <span><a href="{{ route('privacy-policy') }}">Privacy Policy</a> &nbsp; | &nbsp; <a href="{{ route('terms-conditions') }}">Terms &amp; Conditions</a></span>
         </div>
     </div>
 </footer>

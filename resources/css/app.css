@@ -2,10 +2,11 @@
 :root{
   --gold:#d5a43b;--gold-dark:#a97518;--gold-light:#f7edda;
   --black:#080a0d;--navy:#0b1118;--cream:#faf8f3;
-  --text:#17191d;--muted:#6b7078;--border:#e8e5de;
+  --text:#17191d;--muted:#333;--border:#e8e5de;
 }
 *{box-sizing:border-box} html{scroll-behavior:smooth}
 body{margin:0;font-family:"Poppins",Arial,sans-serif;color:var(--text);background:#fff}
+h1,h2,h3,h4,h5,h6,p{color:#333}
 h1,h2,h3,h4,h5,.serif{font-family:"DM Serif Display",Georgia,serif}
 .container{max-width:1180px}
 .navbar{min-height:78px;background:#fff;border-bottom:1px solid #eee;z-index:1030}
@@ -19,7 +20,7 @@ h1,h2,h3,h4,h5,.serif{font-family:"DM Serif Display",Georgia,serif}
 .page-hero{padding:95px 0 90px;background:linear-gradient(115deg,#07090c,#161b20 58%,#2b2111);color:#fff;position:relative;overflow:hidden}
 .page-hero:after{content:"";position:absolute;right:-80px;top:-180px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(213,164,59,.28),transparent 65%)}
 .page-hero .container{position:relative;z-index:1}
-.page-hero h1{font-size:58px;margin:10px 0 14px}
+.page-hero h1{font-size:58px;margin:10px 0 14px;color:#fff}
 .eyebrow,.section-kicker{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-dark);font-weight:800}
 .page-hero .eyebrow{color:#e1b653}
 .page-hero p{max-width:650px;color:#d5d9de;line-height:1.75;margin:0}
@@ -1070,7 +1071,7 @@ select.ya-form-control {
 
     margin: 0 0 5px;
 
-    color: #747c88;
+    color: #333;
 
     font-size: 13px;
 
@@ -1079,350 +1080,18 @@ select.ya-form-control {
 
 
 /* =========================================================
-   FEATURED TESTIMONIAL
+   TESTIMONIAL CARD (photo-forward layout — full-width photo,
+   quote, then name/role)
 ========================================================= */
 
-.ya-featured-testimonial {
-    position: relative;
-
-    min-height: 440px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    padding: 45px;
-
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #0c1729 0%,
-            #172b46 100%
-        );
-
-    overflow: hidden;
-
-    box-shadow:
-        0 25px 60px rgba(14, 28, 47, 0.16);
-}
-
-
-/* Gold glow */
-
-.ya-featured-testimonial::before {
-    content: "";
-
-    position: absolute;
-
-    width: 380px;
-    height: 380px;
-
-    right: -180px;
-    top: -180px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(220, 177, 78, 0.18);
-
-    box-shadow:
-        0 0 0 30px rgba(220, 177, 78, 0.025),
-        0 0 0 60px rgba(220, 177, 78, 0.018);
-}
-
-
-/* Large quote */
-
-.ya-large-quote {
-    position: absolute;
-
-    right: 35px;
-    top: 10px;
-
-    color: rgba(221, 178, 79, 0.14);
-
-    font-family: Georgia, serif;
-
-    font-size: 150px;
-
-    line-height: 1;
-
-    z-index: 1;
-}
-
-
-/* Content */
-
-.ya-featured-content {
-    position: relative;
-    z-index: 2;
-}
-
-.ya-stars {
-    display: flex;
-    gap: 4px;
-
-    margin-bottom: 15px;
-
-    color: #e0b44e;
-
-    font-size: 13px;
-}
-
-.ya-featured-label {
-    display: inline-block;
-
-    margin-bottom: 20px;
-
-    padding: 7px 12px;
-
-    border: 1px solid rgba(221, 178, 79, 0.45);
-
-    border-radius: 30px;
-
-    color: #e1b653;
-
-    font-size: 8px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.5px;
-}
-
-.ya-featured-testimonial blockquote {
-    max-width: 650px;
-
-    margin: 0;
-
-    color: #ffffff;
-
-    font-family: "DM Serif Display", Georgia, serif;
-
-    font-size: clamp(25px, 2.5vw, 35px);
-
-    line-height: 1.4;
-
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   FEATURED FOOTER
-========================================================= */
-
-.ya-featured-footer {
-    position: relative;
-    z-index: 2;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding-top: 25px;
-
-    border-top: 1px solid rgba(255,255,255,0.13);
-}
-
-.ya-profile {
-    display: flex;
-    align-items: center;
-
-    gap: 13px;
-}
-
-.ya-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 46px;
-    height: 46px;
-
-    border-radius: 50%;
-
-    color: #152033;
-
-    background: #d9ad4f;
-
-    font-size: 12px;
-
-    font-weight: 800;
-}
-
-.ya-profile-info strong {
-    display: block;
-
-    color: #ffffff;
-
-    font-size: 13px;
-}
-
-.ya-profile-info span {
-    display: block;
-
-    margin-top: 3px;
-
-    color: #aeb7c4;
-
-    font-size: 10px;
-}
-
-.ya-verified {
-    display: flex;
-    align-items: center;
-
-    gap: 6px;
-
-    color: #d9b25a;
-
-    font-size: 9px;
-
-    font-weight: 700;
-}
-
-.ya-verified i {
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   SMALL TESTIMONIAL LIST
-========================================================= */
-
-.ya-testimonial-list {
-    display: flex;
-    flex-direction: column;
-
-    height: 100%;
-
-    gap: 15px;
-}
-
-.ya-small-testimonial {
-    flex: 1;
-
-    padding: 22px;
-
-    border: 1px solid #e1e4e8;
-
-    border-radius: 13px;
-
-    background: #ffffff;
-
-    transition: all 0.25s ease;
-}
-
-.ya-small-testimonial:hover {
-    transform: translateX(-5px);
-
-    border-color: #d8bc7d;
-
-    box-shadow:
-        0 12px 30px rgba(15, 28, 45, 0.08);
-}
-
-
-/* Small Header */
-
-.ya-small-header {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    margin-bottom: 14px;
-}
-
-.ya-small-profile {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-}
-
-.ya-small-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 38px;
-    height: 38px;
-
-    flex: 0 0 38px;
-
-    border-radius: 50%;
-
-    color: #a4761d;
-
-    background: #f8efd9;
-
-    font-size: 10px;
-
-    font-weight: 800;
-}
-
-.ya-small-profile strong {
-    display: block;
-
-    color: #182338;
-
-    font-size: 12px;
-}
-
-.ya-small-profile span {
-    display: block;
-
-    margin-top: 2px;
-
-    color: #858c98;
-
-    font-size: 9px;
-}
-
-.ya-small-stars {
-    margin-left: auto;
-
-    color: #d6a73f;
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-}
-
-
-/* Small Quote */
-
-.ya-small-testimonial p {
-    position: relative;
-
-    margin: 0;
-
-    padding-left: 13px;
-
-    color: #69727f;
-
-    font-size: 11px;
-
-    font-style: italic;
-
-    line-height: 1.7;
-}
-
-.ya-small-testimonial p::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: 3px;
-
-    width: 2px;
-    height: calc(100% - 6px);
-
-    background: #d0a13f;
-}
-
+.ya-testimonial-card{display:flex;flex-direction:column}
+.ya-testimonial-photo{width:100%;height:220px;object-fit:cover;display:block}
+.ya-testimonial-photo-placeholder{width:100%;height:220px;background:linear-gradient(135deg,#dfe1e3,#a9adb1)}
+.ya-testimonial-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.ya-testimonial-quote{position:relative;margin:0 0 16px;padding-left:14px;color:#333;font-size:13px;font-style:italic;line-height:1.7}
+.ya-testimonial-quote::before{content:"";position:absolute;left:0;top:3px;width:2px;height:calc(100% - 6px);background:#d0a13f}
+.ya-testimonial-name{margin:auto 0 2px;font-size:19px}
+.ya-testimonial-role{font-size:12px;color:#8b909a}
 
 /* =========================================================
    TESTIMONIALS CAROUSEL NAV
@@ -1513,10 +1182,6 @@ select.ya-form-control {
         max-width: 600px;
     }
 
-    .ya-featured-testimonial {
-        min-height: 400px;
-    }
-
 }
 
 
@@ -1536,32 +1201,6 @@ select.ya-form-control {
 
     .ya-heading-content h2 {
         font-size: 38px;
-    }
-
-    .ya-featured-testimonial {
-        min-height: 430px;
-
-        padding: 30px 25px;
-    }
-
-    .ya-featured-testimonial blockquote {
-        font-size: 25px;
-    }
-
-    .ya-featured-footer {
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        gap: 15px;
-    }
-
-    .ya-testimonial-list {
-        gap: 12px;
-    }
-
-    .ya-small-testimonial {
-        flex: initial;
     }
 
     .ya-trust-stats {

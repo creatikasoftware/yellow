@@ -40,11 +40,11 @@
                     <div class="row g-4">
                         @foreach($categories as $category)
                             @foreach($speakersByCategory->get($category->id, collect()) as $speaker)
-                                <div class="col-6 col-lg-3"><x-speaker-card :speaker="$speaker" /></div>
+                                <div class="col-6 col-lg-3"><x-speaker-card :speaker="$speaker" :with-link="false" /></div>
                             @endforeach
                         @endforeach
                         @foreach($uncategorized as $speaker)
-                            <div class="col-6 col-lg-3"><x-speaker-card :speaker="$speaker" /></div>
+                            <div class="col-6 col-lg-3"><x-speaker-card :speaker="$speaker" :with-link="false" /></div>
                         @endforeach
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <div class="tab-pane fade" id="speakers-cat-{{ $category->id }}">
                         <div class="row g-4">
                             @foreach($speakersByCategory->get($category->id) as $speaker)
-                                <div class="col-6 col-lg-3"><x-speaker-card :speaker="$speaker" /></div>
+                                <div class="col-6 col-lg-3"><x-speaker-card :speaker="$speaker" :with-link="false" /></div>
                             @endforeach
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                     <div class="tab-pane fade" id="speakers-other">
                         <div class="row g-4">
                             @foreach($uncategorized as $speaker)
-                                <div class="col-6 col-lg-3"><x-speaker-card :speaker="$speaker" /></div>
+                                <div class="col-6 col-lg-3"><x-speaker-card :speaker="$speaker" :with-link="false" /></div>
                             @endforeach
                         </div>
                     </div>

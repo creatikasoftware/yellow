@@ -42,6 +42,7 @@
                 <a class="nav-link {{ request()->routeIs('admin.pages.contact') ? 'active' : '' }}" href="{{ route('admin.pages.contact') }}"><i class="bi bi-envelope-paper me-2"></i>Contact</a>
                 <a class="nav-link {{ request()->routeIs('admin.pages.partner') ? 'active' : '' }}" href="{{ route('admin.pages.partner') }}"><i class="bi bi-handshake me-2"></i>Partner With Us</a>
                 <a class="nav-link {{ request()->routeIs('admin.pages.privacy') ? 'active' : '' }}" href="{{ route('admin.pages.privacy') }}"><i class="bi bi-shield-lock me-2"></i>Privacy Policy</a>
+                <a class="nav-link {{ request()->routeIs('admin.pages.terms') ? 'active' : '' }}" href="{{ route('admin.pages.terms') }}"><i class="bi bi-file-text me-2"></i>Terms &amp; Conditions</a>
 
                 <div class="nav-section">Content</div>
                 <a class="nav-link {{ request()->routeIs('admin.services.*') ? 'active' : '' }}" href="{{ route('admin.services.index') }}"><i class="bi bi-gear me-2"></i>Services</a>

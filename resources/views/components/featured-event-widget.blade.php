@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="ya-event-actions">
-                            <a href="#" class="ya-btn ya-btn-gold"><i class="bi bi-download"></i> Download Brochure</a>
+                            <a href="{{ route('registration') }}" class="ya-btn ya-btn-gold"><i class="bi bi-pencil-square"></i> Nominate Now</a>
                             <a href="{{ route('events.show', $event->slug) }}" class="ya-btn ya-btn-outline"><i class="bi bi-arrow-right"></i> Event Details</a>
                         </div>
 

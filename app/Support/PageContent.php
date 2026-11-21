@@ -108,6 +108,10 @@ class PageContent
                 'title' => 'Privacy Policy',
                 'body' => '<p>We respect your privacy and are committed to protecting the personal information you share with us. This policy explains what information we collect, how we use it, and the choices you have.</p><h3>Information We Collect</h3><p>We collect information you provide directly to us, such as your name, email address and phone number when you register for an event, submit a nomination or contact us.</p><h3>How We Use Your Information</h3><p>We use the information we collect to process registrations, respond to enquiries, and keep you informed about our events and awards.</p><h3>Contact Us</h3><p>If you have any questions about this Privacy Policy, please contact us at info@yellowawards.in.</p>',
             ],
+            'terms' => [
+                'title' => 'Terms & Conditions',
+                'body' => '<p>These Terms & Conditions govern your use of the Yellow Achiever\'s Award website and participation in our events, awards and programs. By using this site or registering for an event, you agree to these terms.</p><h3>Event Registration</h3><p>Registrations are subject to review and confirmation by our team. We reserve the right to decline or cancel a registration at our discretion.</p><h3>Nominations & Awards</h3><p>All nominations are reviewed by our panel. Award decisions are final and at the sole discretion of Yellow Achiever\'s Award.</p><h3>Intellectual Property</h3><p>All content on this website, including logos, text and images, is the property of Yellow Achiever\'s Award and may not be used without permission.</p><h3>Contact Us</h3><p>If you have any questions about these Terms & Conditions, please contact us at info@yellowawards.in.</p>',
+            ],
 
             // Site-wide values shown in the footer (and the contact page's
             // info box) on every page, not just one — kept in their own
