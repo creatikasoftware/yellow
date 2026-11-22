@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Concerns\HandlesUploads;
 use App\Http\Controllers\Controller;
 use App\Support\PageContent;
 use Illuminate\Http\RedirectResponse;
@@ -9,6 +10,8 @@ use Illuminate\Http\Request;
 
 class PageContentController extends Controller
 {
+    use HandlesUploads;
+
     public function editHome()
     {
         $content = PageContent::get('home');
@@ -73,6 +76,7 @@ class PageContentController extends Controller
             'hero_subtitle' => ['required', 'string', 'max:1000'],
             'intro_kicker' => ['required', 'string', 'max:255'],
             'intro_title' => ['required', 'string', 'max:255'],
+            'intro_image' => ['nullable', 'image', 'max:4096'],
             'intro_body_1' => ['required', 'string'],
             'stat_1_value' => ['required', 'string', 'max:50'],
             'stat_1_label' => ['required', 'string', 'max:100'],
@@ -87,6 +91,13 @@ class PageContentController extends Controller
             'cta_text' => ['required', 'string', 'max:255'],
             'cta_button_text' => ['required', 'string', 'max:100'],
         ]);
+
+        if ($request->hasFile('intro_image')) {
+            $this->deleteStoredImage(PageContent::get('about')['intro_image']);
+            $validated['intro_image'] = $this->storeUploadedImage($request, 'intro_image', 'about');
+        } else {
+            unset($validated['intro_image']);
+        }
 
         $values = [];
         foreach ($validated['value_label'] as $index => $label) {

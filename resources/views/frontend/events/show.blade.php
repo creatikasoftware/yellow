@@ -77,4 +77,20 @@
         </section>
     @endif
 
+    @if($event->galleryItems->isNotEmpty())
+        <section class="section {{ $event->agendaItems->isEmpty() ? 'section-alt' : '' }}">
+            <div class="container">
+                <div class="section-kicker">Event Gallery</div>
+                <h2 class="section-title mb-4">Moments From This Event</h2>
+                <div class="row g-3">
+                    @foreach($event->galleryItems as $item)
+                        <div class="col-6 col-lg-3"><x-gallery-card :item="$item" /></div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        <x-gallery-lightbox />
+    @endif
+
 @endsection

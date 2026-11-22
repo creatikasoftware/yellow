@@ -6,7 +6,7 @@
 
     <x-admin.page-heading title="About Page Content" />
 
-    <form method="POST" action="{{ route('admin.pages.about.update') }}">
+    <form method="POST" action="{{ route('admin.pages.about.update') }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -27,6 +27,7 @@
             <div class="card-body">
                 <x-admin.input name="intro_kicker" label="Kicker" :value="$content['intro_kicker']" required />
                 <x-admin.input name="intro_title" label="Title" :value="$content['intro_title']" required />
+                <x-admin.file name="intro_image" label="Image" :current="$content['intro_image']" help="Shown beside the Introduction text." />
                 <x-admin.rich-editor name="intro_body_1" label="Paragraph 1" :value="$content['intro_body_1']" />
                 <div class="row">
                     <div class="col-md-3"><x-admin.input name="stat_1_value" label="Stat 1 value" :value="$content['stat_1_value']" required /></div>

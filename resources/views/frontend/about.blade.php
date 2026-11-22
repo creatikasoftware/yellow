@@ -19,7 +19,11 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6">
-                    <div class="image-placeholder" style="height:430px"></div>
+                    @if($content['intro_image'])
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($content['intro_image']) }}" alt="{{ $content['intro_title'] }}" class="img-fluid rounded" style="width:100%;height:430px;object-fit:cover">
+                    @else
+                        <div class="image-placeholder" style="height:430px"></div>
+                    @endif
                 </div>
                 <div class="col-lg-6">
                     <div class="section-kicker">{{ $content['intro_kicker'] }}</div>

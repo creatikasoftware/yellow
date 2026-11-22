@@ -59,6 +59,7 @@ class PageContent
                 'hero_subtitle' => "Discover the vision behind Yellow Achiever's Award and our commitment to recognizing excellence.",
                 'intro_kicker' => 'Who We Are',
                 'intro_title' => 'A Platform Built Around Achievement',
+                'intro_image' => null,
                 'intro_body_1' => 'We bring together achievers, business leaders, entrepreneurs, professionals and changemakers through awards, summits and networking experiences.',
                 'stat_1_value' => '5000+',
                 'stat_1_label' => 'Nominations',

@@ -69,7 +69,7 @@ class Event extends Model
 
     public function galleryItems(): HasMany
     {
-        return $this->hasMany(GalleryItem::class);
+        return $this->hasMany(GalleryItem::class)->orderBy('sort_order');
     }
 
     public function scopePublished($query)

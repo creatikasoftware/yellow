@@ -21,7 +21,7 @@ class EventController extends Controller
     {
         abort_if($event->status !== 'published', 404);
 
-        $event->load('agendaItems');
+        $event->load('agendaItems', 'galleryItems');
 
         return view('frontend.events.show', compact('event'));
     }
